@@ -1,8 +1,191 @@
-<html>
-  <head>
-    <title>rpajarola.github.io</title>
-  </head>
-  <body>
-    Hello world!
-  </body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rpajarola</title>
+<meta name="description" content="Boot servers and emulators for old and unusual computers: gobootd, tme and gxemul, with Debian, Ubuntu and macOS packages.">
+<style>
+  :root {
+    --bg: #f6f3ec;
+    --fg: #1f1d1a;
+    --muted: #6b665d;
+    --card: #fffdf8;
+    --line: #e2dccf;
+    --accent: #b5530f;
+    --code-bg: #efe9dc;
+    --shadow: 0 1px 2px rgba(60, 40, 10, .06), 0 4px 16px rgba(60, 40, 10, .05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12110f;
+      --fg: #ece6da;
+      --muted: #9a9284;
+      --card: #1b1a17;
+      --line: #2e2b26;
+      --accent: #f0a04b;
+      --code-bg: #0c0b0a;
+      --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  main { max-width: 960px; margin: 0 auto; padding: 56px 16px 40px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code, pre, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+  header { margin-bottom: 48px; }
+  .prompt { color: var(--accent); font-size: 14px; letter-spacing: .02em; margin: 0 0 12px; }
+  .prompt::after {
+    content: "";
+    display: inline-block;
+    width: .55em; height: 1.05em;
+    margin-left: 4px;
+    vertical-align: -2px;
+    background: var(--accent);
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .prompt::after { animation: none; } }
+  h1 { font-size: clamp(32px, 6vw, 48px); line-height: 1.1; margin: 0 0 16px; letter-spacing: -.02em; }
+  .lede { font-size: 18px; color: var(--muted); max-width: 640px; margin: 0; }
+
+  h2 {
+    font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--muted); margin: 0 0 16px;
+  }
+  section { margin-bottom: 48px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 16px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex; flex-direction: column;
+    min-width: 0;
+  }
+  .card h3 { margin: 0 0 2px; font-size: 20px; }
+  .card h3 a { color: var(--fg); }
+  .card .tag { font-size: 13px; color: var(--muted); margin: 0 0 12px; }
+  .card p { margin: 0 0 12px; font-size: 15px; }
+  .card ul { margin: 0 0 16px; padding-left: 18px; font-size: 14px; color: var(--muted); }
+  .card .links { margin-top: auto; display: flex; gap: 16px; font-size: 14px; flex-wrap: wrap; }
+
+  .install { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 16px; }
+  .install .card h3 { font-size: 17px; margin-bottom: 8px; }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin: 0 0 12px;
+    font-size: 13px; line-height: 1.5;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  pre .c { color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); padding-top: 20px; font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="prompt mono">ok boot net</p>
+    <h1>Software for old and unusual computers</h1>
+    <p class="lede">A network boot server and two emulators, built to boot and run vintage
+      Sun, HP and DEC machines, real or emulated, with packages for Debian, Ubuntu and macOS.</p>
+  </header>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="grid">
+      <article class="card">
+        <h3><a href="https://github.com/rpajarola/gobootd">gobootd</a></h3>
+        <p class="tag">Network boot server</p>
+        <p>Boots old and unusual machines over the network, every protocol answering
+          from one description of each client.</p>
+        <ul>
+          <li>RARP, RMP, Sun ND, TFTP, bootparam, NFSv2, NIS</li>
+          <li>bootbridge: Ethernet over UDP or L2TPv3, for emulators</li>
+        </ul>
+        <div class="links">
+          <a href="https://github.com/rpajarola/gobootd/releases">Releases</a>
+          <a href="https://github.com/rpajarola/gobootd">Source</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3><a href="https://github.com/rpajarola/tme">tme</a></h3>
+        <p class="tag">The Machine Emulator</p>
+        <p>Emulates Sun workstations well enough to boot their PROMs and run SunOS and NetBSD:
+          Sun-2, Sun-3, SPARCstation (sun4c) and UltraSPARC.</p>
+        <ul>
+          <li>GTK display with media menu, screenshots and recording</li>
+          <li>SIMH tape images, Sun disk labels, Ethernet over UDP and L2TPv3</li>
+        </ul>
+        <div class="links">
+          <a href="https://github.com/rpajarola/tme/releases">Releases</a>
+          <a href="https://github.com/rpajarola/tme">Source</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3><a href="https://github.com/rpajarola/gxemul">gxemul</a></h3>
+        <p class="tag">GXemul</p>
+        <p>Emulates DECstations, SGI, LUNA-88K and many other machines, from MIPS
+          to ARM and M88K.</p>
+        <ul>
+          <li>Real TURBOchannel option ROMs, SIMH tape images</li>
+          <li>Ethernet over L2TPv3, screenshots and recording</li>
+        </ul>
+        <div class="links">
+          <a href="https://github.com/rpajarola/gxemul/releases">Releases</a>
+          <a href="https://github.com/rpajarola/gxemul">Source</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Install</h2>
+    <div class="install">
+      <div class="card">
+        <h3><a href="apt/">Debian and Ubuntu</a></h3>
+        <p>A signed apt repository, for amd64 and arm64.</p>
+<pre><span class="c"># once</span>
+sudo curl -fsSLo /usr/share/keyrings/rpajarola.gpg \
+  https://rpajarola.github.io/apt/rpajarola.gpg
+echo "deb [signed-by=/usr/share/keyrings/rpajarola.gpg] \
+https://rpajarola.github.io/apt stable main" \
+  | sudo tee /etc/apt/sources.list.d/rpajarola.list
+sudo apt update
+
+sudo apt install gobootd tme gxemul</pre>
+        <div class="links"><a href="apt/">apt repository</a></div>
+      </div>
+      <div class="card">
+        <h3><a href="https://github.com/rpajarola/homebrew-tap">macOS</a></h3>
+        <p>A Homebrew tap, or an installer package from a project's releases
+          page, which needs no Homebrew.</p>
+<pre>brew install rpajarola/tap/gobootd
+brew install rpajarola/tap/tme
+brew install rpajarola/tap/gxemul</pre>
+        <div class="links"><a href="https://github.com/rpajarola/homebrew-tap">Homebrew tap</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="https://github.com/rpajarola">github.com/rpajarola</a>
+  </footer>
+</main>
+</body>
 </html>
